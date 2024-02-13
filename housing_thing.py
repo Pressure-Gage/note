@@ -5,8 +5,9 @@ if ans == 'yes':
     bedrooms = int(input("how many bedrooms do you want? "))
     if bedrooms <3:
         bathrooms = int(input("how many bathrooms do you want? "))
-        if bathrooms <3:
-            square_feet = int(input("how much square footage are you looking for? "))
-    print("you have selected", bedrooms, "amount of bedrooms,", bathrooms, "amount of bathrooms, and", square_feet, "square footage")
+        print("you have selected", bedrooms, "bedrooms and", bathrooms, " bathrooms")
+    elif bedrooms >=3:
+        square_feet = int(input("how much square footage are you looking for? "))
+    print("you have selected", bedrooms, "bedrooms, and", square_feet, "square feet")
 else:
     print("Ok, have a nice day!")
