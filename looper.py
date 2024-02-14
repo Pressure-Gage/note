@@ -1,8 +1,11 @@
    # try: create a launch timer 
+import time
+
 count = 10
 
 while count >0:
-    print('count')
+    time.sleep(1)
+    print(count)
     count = count - 1
 
 
