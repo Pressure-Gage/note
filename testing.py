@@ -36,3 +36,10 @@ while choice == 2:
             decoded_message = decoded_message + chr(ord(decode[i]) - 3)
     print (decoded_message)
     choice = int(input("what would you like to do next?: "))
+
+while choice == 3:
+  print (all_encodeed_messages)
+  choice = int(input("what would you like to do next?: "))
+
+if choice == 4:
+  print(f'Ok {username}, have a nice day!')
