@@ -1,29 +1,16 @@
 import random
+import csv
 
 choice = 0
 name = 0
 point = 0
+quiz_results = 0
+questions = 5
 
 num1 = 0
 num2 = 0
-num3 = 0
-num4 = 0
-num5 = 0 
-num6 = 0
-num7 = 0
-num8 = 0
-num9 = 0
-num10 = 0
-
-ans1 = num1 + num2
-ans2 = num3 - num4
-ans3 = num5 * num6
-ans4 = num7 / num8
-ans5 = num9 ** num10
 
 
-
-name = input('Hi! What is your name? ')
 print('''
 ###################
 Menu
@@ -32,34 +19,90 @@ Menu
 3)    Quit
 ###################
 ''')
-choice = int(input(f'hi {name}, what would you like to do: ' ))
+choice = int(input(f'hi , what would you like to do: ' ))
 
-while choice == 1:
-    ans1 = int(input(f'Ok, here is the first question \n what is {num1} + {num2}?\n'))
-    if ans1 == num1 + num2:
+if choice == 1:
+    file = open('quiz_results.csv', 'a')
+    name = input('what is your name? ')
+    num1 = random.randint (1,10)
+    num2 = random.randint (1,10)
+    pans1 = int(input(f'Ok, here is the first question \n what is {num1} + {num2}?\n'))
+    if pans1 == num1 + num2:
         print('Correct!')
         point = point + 1
-        ans2 = int(input(f'ok, here is the next question.\n What is {num3} - {num4}\n '))
-        if ans2 == num3 - num4:
-            print('Correct!')
-            point = point + 1
-            ans3 = int(input(f'ok, here is the third question.\n what is {num5} * {num6}\n '))
-            if ans3 == num5 * num6:
-                print('Correct')
-                point = point + 1
-                ans4 = int(input(f'Almost there! here is the fourth question.\n what is {num7} / {num8}?\n'))
-                if ans4 == num7 / num8:
-                    print('Correct')
-                    point = point + 1
-                    ans5 = int(input(f'Last Question! \n what is {num9}^{num10}?\n'))
-                    if ans5 == num9 ** num10:
-                        print('Correct!')
-                        point = point + 1
-                        choice = input('you have completed the quiz. What would you like to do now? ')
-                    else print('Wrong')
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans2 = int(input(f'ok, here is the next question.\n What is {num1} - {num2}\n '))
+    else:
+        print('Wrong')
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans2 = int(input(f'ok, here is the next question.\n What is {num1} - {num2}\n '))
 
-while choice == 2:
-    dd
+    if pans2 == num1 - num2:
+        print('Correct!')
+        point = point + 1
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans3 = int(input(f'ok, here is the third question.\n what is {num1} * {num2}\n '))
+    else:
+        print('Wrong')
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans3 = int(input(f'ok, here is the third question.\n what is {num1} * {num2}\n '))          
+       
+    if pans3 == num1 * num2:
+        print('Correct')
+        point = point + 1
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans4 = float(input(f'Almost there! here is the fourth question.\n what is {num1} / {num2}?\n'))
+    else:
+        print('Wrong')
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans4 = int(input(f'Almost there! here is the fourth question.\n what is {num1} / {num2}?\n'))
+    
+    if pans4 == round((num1 / num2), 2):
+        print('Correct')
+        point = point + 1
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans5 = int(input(f'Last Question! \n what is {num1}^{num2}?\n'))
+    else:
+        print('Wrong')
+        num1 = random.randint (1,10)
+        num2 = random.randint (1,10)
+        pans5 = int(input(f'Last Question! \n what is {num1}^{num2}?\n'))
+    
+    if pans5 == num1 ** num2:
+        print('Correct!')
+        point = point + 1
+        quiz_results = (point / questions) * 100
+        new_record = (name) + ',' + str(point) + ',' + str(questions) + ',' + str(quiz_results) + '\n'
+        file.write(str(new_record))
+        file.close
+        choice = int(input('you have completed the quiz. What would you like to do now? '))
+    else:
+        print('Wrong')
+        quiz_results = (point / questions) * 100
+        new_record = (name) + ',' + str(point) + ',' + str(questions) + ',' + str(quiz_results) + '\n'
+        file.write(str(new_record))
+        file.close
+        choice = int(input('you have completed the quiz. What would you like to do now? '))
+
+
+
+
+
+if choice == 2:
+    file = open('quiz_results.csv', 'r')
+    reader = csv.reader(file)
+    Math = list(reader)
+    print (Math)
+    file.close()
+    choice = input('What would you like to do now? ')
 
 if choice == 3:
     print(f'Ok {name}, have a nice day!')
+    
