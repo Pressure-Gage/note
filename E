@@ -1,0 +1,36 @@
+cars = {}
+
+def add_car(car_name, price):
+    cars[car_name] = price
+    print(f"{car_name} added to the database.")
+
+def remove_car(car_name):
+    if car_name in cars:
+        del cars[car_name]
+        print(f"{car_name} removed from the database.")
+    else:
+        print("Car not found in the database.")
+
+def change_price(car_name, new_price):
+    if car_name in cars:
+        cars[car_name] = new_price
+        print(f"Price for {car_name} changed to ${new_price}.")
+    else:
+        print("Car not found in the database.")
+
+def display_inventory():
+    print("Current Inventory:")
+    for car, price in cars.items():
+        print(f"{car}: ${price}")
+
+# Example usage:
+add_car("Toyota Camry", 25000)
+add_car("Honda Civic", 22000)
+
+display_inventory()
+
+remove_car("Toyota Camry")
+display_inventory()
+
+change_price("Honda Civic", 21000)
+display_inventory()
