@@ -1,18 +1,23 @@
 cars = {}
 
-def add_car(car_name, price):
+def add_car():
+    car_name = input("Enter the car name: ")
+    price = float(input("Enter the price: "))
     cars[car_name] = price
     print(f"{car_name} added to the database.")
 
-def remove_car(car_name):
+def remove_car():
+    car_name = input("Enter the car name to remove: ")
     if car_name in cars:
         del cars[car_name]
         print(f"{car_name} removed from the database.")
     else:
         print("Car not found in the database.")
 
-def change_price(car_name, new_price):
+def change_price():
+    car_name = input("Enter the car name to change price: ")
     if car_name in cars:
+        new_price = float(input("Enter the new price: "))
         cars[car_name] = new_price
         print(f"Price for {car_name} changed to ${new_price}.")
     else:
@@ -23,14 +28,25 @@ def display_inventory():
     for car, price in cars.items():
         print(f"{car}: ${price}")
 
-# Example usage:
-add_car("Toyota Camry", 25000)
-add_car("Honda Civic", 22000)
+# Main loop
+while True:
+    print("\n1. Add Car")
+    print("2. Remove Car")
+    print("3. Change Price")
+    print("4. Display Inventory")
+    print("5. Exit")
+    choice = input("Enter your choice (1-5): ")
 
-display_inventory()
-
-remove_car("Toyota Camry")
-display_inventory()
-
-change_price("Honda Civic", 21000)
-display_inventory()
+    if choice == '1':
+        add_car()
+    elif choice == '2':
+        remove_car()
+    elif choice == '3':
+        change_price()
+    elif choice == '4':
+        display_inventory()
+    elif choice == '5':
+        print("Exiting program. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a number between 1 and 5.")
